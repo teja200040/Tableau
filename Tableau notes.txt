@@ -1,0 +1,265 @@
+Types of data - 
+Data domain= Differente type of data like finanace domain,HR domain,Retail Domain(Business to customer)
+
+1. String = Alphabets or Aplha numeric('Pooja','Kumar')it is shown as Abc icon
+2. Date = calender icon
+3. Georgraphical = globe icon
+4. Numeric = # icon.
+
+Sheet= This is a place where we can create chart as many as we can.charts
+Charts per Sheet is only allowed in Tableau.
+
+Dimension = String,Geographical,Date(cannot be added like applications a+b or a*b)- Discrete 
+Measures = Numeric values( can be added).-Continuous
+
+Color legend
+
+
+Introduction--
+
+1.Tableau Desktop- to install that is dashboard.(Professional and public)
+2.Tableau Server.
+3.Tableau Online.
+4.Tableau Prep.- this is ETL tool or Software= which is used to clean data such data which contains wrong values.
+5.Tableau reader.- Read the codes of others.
+5.Tableau Public.- helps in interview same as github.
+
+Both 2 & 3 are used for work with the Clients.
+
+Extensions-  .twb(workbook)  .twbx(package) .twbx is best for sharing and saving the file.
+
+ 
+Aggregation= Combine of numerical data.                 For example= Sum(10,20,30) = 60 here, 60 is aggregated value 
+Non-Aggregation= 10,20,30 are nonaggregated value.
+
+How many connection do we have in tableau?? 
+Ans: LIVE and EXTRACT
+live means prseent data to modify 
+extract means past data tableau data extract (.hyper)
+
+TOOLTIP:
+a message with information that appears when you hold a cursor over a piece of text or an icon on a website or in a software program.
+
+WHAT IS THE DIFFERENCE B/W TOOLTIP AND DETAIL??
+The difference is that whatever information is added as a Label will show up on the view itself, while any information added to the tooltips will only show up when an end user hovers over marks on the view. This is an important distinction that should be considered when you are authoring in Tableau.
+
+SECTION OF CATERGORY IS CALLED AS PANE.
+
+Four types of joints 
+1. Left
+2. Right
+3. Inner
+4. full 
+
+TYPES OF MAPS:
+Symbol map
+filled map
+
+FILTERS(6)- The concept in any software to restrict the data into chart based on the requirement.
+1.Extract- This is applicable on rows not on columns.
+2.Data source
+3.Context: This takes only 3 of all dataset 
+4.Dimension
+5.Measure
+6.Quick or interactive filters.
+slicer- adding the interactive filters so that user gets it.
+cascading effect or operation.
+casket- taking the relavent column or rows for the operation to specify.
+
+Animation - Simultaneous and Sequential.
+
+
+
+CALCULATIONS:
+TYPES OF CALCULATIONS
+1.Basic
+2.LOD'S(Level of Detail Expressions)
+3.Table
+
+Create calculated Field--
+
+Boolean calculation
+RANK(SUM([SALES]))<=6
+OR = RANK(SUM([SALES]))= 4 OR RANK(SUM([SALES]))= 10
+
+LOOKUP(SUM([Sales]),-1) these -1,0,1 are offset location
+-1 IS previous rule
+0 is current rule
+1 is next group
+
+TO FIND PERCENTAGE BY COMAPRING OF BOTH THE VALUES
+(Current value-previous value)/Previous value 
+
+
+      windows_sum      running_sum
+a        -----             a
+b         b+a              a+b
+c         c+b              a+b+c
+d         d+c              a+b+c+d
+
+
+# NOW()
+# TODAY()
+# YEAR()
+# YEAR(TODAY())
+# MONTH(TODAY())
+# DAY(TODAY())
+# QUARTER(TODAY())
+# WEEK(TODAY())
+# DATENAME('month',TODAY())
+# DATENAME('weekday',TODAY())
+# DATEPART('weekday',TODAY()) ---- WHICH DAY SHOWN IN NUMBER.
+# DATEPART('weekday',TODAY()) IN (1,7)
+# DATENAME("weekday",TODAY())+ " , " + DATENAME('day',TODAY())+ ','+ DATENAME('month',TODAY())+','+STR(YEAR(TODAY()))
+# UPPER(DATENAME('weekday',TODAY()))
+# LEFT(DATENAME('weekday',TODAY()),3)
+# RIGHT(DATENAME('weekday',TODAY()),3)
+# IF DATEPART("weekday",TODAY()) IN (1,7) THEN 'Weekend' ELSE 'Weekday' END
+# IF DATEPART("weekday",[Order Date]) IN (1,7) THEN 'Weekend' ELSE 'Weekday' END
+ 
+
+SALES     RANK       DENSE_RANK
+250K        1            1
+200K        2            2
+200K        2            2
+200K        2            2
+150K        5            3
+
+
+LOD'S(Level of detail expression) - { } 
+FIXED LOD - WE USE THIS FOR 1ST AND LAST PURCHASE RATE.
+{FIXED [Category]:SUM([Sales])}
+{FIXED [Customer ID]: MIN([Order Date])}
+{FIXED [Customer ID]: MAX([Order Date])}
+
+
+INCLUDE LOD --- WHAT IS THE AVG SALES PER REGION ( 1D ) --WHAT IS THE AVG SALES PER CUSTOMER PER REGION ( 2D )
+THIS INCLUDE LOD GOES MORE IN DEPTH AND WORKS ON 2D FOR ADDING.
+{INCLUDE [Customer Name]:SUM([Sales])}
+
+EXCLUDE LOD---- WE CAN ADD EXTRA DIMENSION IN 
+{EXCLUDE [Segment],[Region],[Sub-Category]:SUM([Sales])}
+WE USE THIS IN RARE CASES WHEN WE ARE GETTING DUPLICATE ISSUES FOR FIXED LOADING.
+
+
+TABLE: 
+CALCULATION TYPE:DIFFERENCE FORM
+COMPUTE USING : ACROSS/DOWN
+RELATIVE TO: PREVIOUS/NEXT/FIRST/LAST
+
+PREVIOUS = CV-RT(CURRENT VALUE - RELATIVE VALUE)
+ZN MEANS IT IS USED TO TREAT THE NULL VALUES INTO ZERO'S.
+ 
+
+DATA COMBINE
+TYPES OF COMBINE:
+1.JOINS---- INNER,LEFT,RIGHT,FULL OUTER
+2.RELATIONSHIP
+3.BLENDING
+4.UNION
+
+JOINS:
+THIS CONTAINS AND PERFORM IN PHYSICAL LAYER.
+
+RELATIONSHIPS:
+THEY ARE ALWAYS PERFORM IN THE LOGICAL LAYER.
+  The connection of both is by nodal(orange line).
+
+BLENDING:
+THIS IS OLD TECHNIQUE WHICH IS USED TO PERFORM JOINTS OR RELATIONSHIP IN A SINGLE WORKBOOK.
+TYPE 
+LEFT ----- THIS IS BY DEFAULT.
+INNER 
+TWO TYPE OF SOURCES:
+PRIMARY DATA SOURCE---- INDICATED IN BLUE COLOUR TICK MARK.
+SECOUNDARY DATA SOURCE------INDICATED IN ORANGE COLOUR TICK MARK.
+IN BLENDING WE HAVE ONLY ONE PRIMARY DS BUT CAN HAVE MULTIPLE DS AND CAN BE ADDED.
+LINAKGE IS SHOWN IN SECOUNDARY DS
+
+UNION:(APPEND)
+COMBINE BOTH THE ROWS OF BOTH THE TABLES WITHOUT COMMON FORM.
+
+
+HERE COMBO CHART ARE CREATED THEY ARE SAID AS DUAL AXIS AND BLENDED AXIS.
+
+CUSTOM CHART 
+1.LOLLIPOP CHART
+2.DONUT CHART
+3.FUNNEL CHART
+4.BUTTERFLY CHART(ALSO CALLED AS FUNNEL CHART)
+5.WORDCLOUD
+6.KPI(KEEP PERFORMANCE INDICATE)---- MAIN MATRIXES FORM
+
+
+GROUPS:
+GROUPS MEANS HIERARCHIES AND SETS IN TABLEAU
+
+BINS:
+HISTOGRAM--- THIS HELPS IN THE FREQUENCY DISTRIBUTION(INTERVALS)
+BINS ARE INTERVALS
+SIZE OF BINS IS RANGE
+BINS ARE CREATE ON A CONTIONUOUS REGION THEY ARE CREATE ON  MEASURES ONLY NOT ON DIMENSIONS.
+
+
+HIERARCHY:
+DRILL DOWN --- DOWN APPROACH.
+
+SETS:
+THEY ARE BASICALLY THE FEATURES IN TABLEAU WHICH IS USED FOR THE MEMBERS TOGETHER VALUES OF THE DIMENSION TOGETHER BASED ON CONDITION.
+TYPES OF SETS:
+1.FIXED--- SIMILAR TO GROUPS
+2.DYNAMICS--- THESE ARE THE SETS WHICH CHANGES BASED ON THE CONDITION IF VALUES CHANGES THE CONDITION CHANGES BASED ON THE SETS.
+          ---- THEY ARE GOING TO CHANGE THE CONDITION.
+SET1: TOP 5
+SET2: BOTTOM 5
+
+IN MEMBER
+OUT MEMBER
+
+PARAMETER:USER DEMAND ACCORDING TO CUSTOMER REQUIREMENT.
+---- which are used to the change the value chart dynamically based on user interaction.
+IF [Parameter 1]="Sales" THEN SUM([Sales])
+ELSEIF [Parameter 1]="profit" THEN SUM([Profit])
+ELSEIF [Parameter 1]="cost" THEN SUM([Sales])-SUM([Profit])
+ELSEIF [Parameter 1]='Quantity' THEN SUM([Quantity])
+ELSE SUM([Discount])
+END
+
+
+REFRENCE LINE---USED AS A REFERENCE TO TAKE FURTHER DECISIONS.
+THIS CONSISTS OF TABLE,PANE AND CELL.
+
+
+FORECASTING AND CLUSTERING:
+TREND LINE--- WEATHER THEY ARE IN INCRESING OR DECREASING MODE.(y=mx+c)
+
+
+TABLEAU DASHBOARD:
+- THIS IS COMBINATION OF DIFFERENT CHART
+
+DASHBOARD ACTIONS:(CTRL+SHIFT+D)
+1.FILTER 
+2.HIGHLIGHT
+3.URL 
+4.SHEET--- USING BUTTONS TO SHOW DIFFERENT DASHBOARD.(SUB-NAVIGATION)
+5.PARAMETER
+6.SET
+
+SERVER IS LOCATED IN. THIS IS USED IN FOR STORING THE DASHBOARD FOR THE CLIENT TO SHOWCHASE.
+WEB DATA CONNECTED FOR JOB ROLE IN URL FORM.
+
+NAVIGATION:
+--HELPS IN MOVING TO THE OTHER SLIDE OR DASHBOARD.
+
+
+INTERVIEW QUESTIONS:
+FILTERS
+COMBINING TECHNIQUES
+PARAMETERS
+DIFFERENCE B/W LIVE AND EXTRACT
+DATA SOURCE AND DATA EXTRACT FLITERS
+PERFORMANCE OF TABLEAU 
+ORDER OF OPERATION IN TABLEAU
+MANUAL SORTING
+GROUPS AND SETS
+ 
